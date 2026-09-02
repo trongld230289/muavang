@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tây Bắc 9 ngày · 12–20/9/2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F6F4EC; --ink:#1F2A22; --muted:#6B7A6E; --line:#DDD9CC; --card:#FFFFFF;
+    --hn:#5B6470; --tt:#B8722E; --mcc:#2F7D4A; --sp:#3B5A9A; --kqs:#8A3E63;
+    --hl:#FFF1C2; --todo:#FDE8E4;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;font-size:15px;line-height:1.5}
+  .wrap{max-width:820px;margin:0 auto;padding:40px 22px 80px}
+  /* header */
+  .hero{margin-bottom:34px}
+  .hero .kicker{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .hero h1{margin:6px 0 4px;font-size:40px;line-height:1.05;font-weight:700;letter-spacing:-.02em}
+  .hero .dates{font-size:17px;color:var(--muted);font-style:italic}
+  .route{display:flex;flex-wrap:wrap;gap:6px;margin-top:18px;align-items:center;font-size:13px;font-weight:600}
+  .route span{padding:5px 11px;border-radius:999px;color:#fff;background:var(--c)}
+  .route i{color:var(--muted);font-style:normal}
+  /* legend */
+  .legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin:14px 0 30px}
+  .legend b{display:inline-block;padding:1px 7px;border-radius:4px;font-weight:600;color:var(--ink)}
+  .legend .h{background:var(--hl)} .legend .t{background:var(--todo)}
+  /* phase */
+  .phase{margin-top:30px;display:flex;align-items:center;gap:12px}
+  .phase h2{margin:0;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--c);font-weight:700}
+  .phase::after{content:"";flex:1;height:1px;background:var(--line)}
+  /* day card */
+  .day{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--c);border-radius:12px;padding:18px 22px 16px;margin-top:12px;position:relative}
+  .day .top{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .day .n{font-size:12px;font-weight:700;color:var(--c);letter-spacing:.08em;text-transform:uppercase}
+  .day .d{font-size:20px;font-weight:700;letter-spacing:-.01em}
+  .day .wd{font-size:13px;color:var(--muted)}
+  .day h3{margin:4px 0 10px;font-size:16px;font-weight:500;font-style:italic;color:var(--muted)}
+  .day ul{margin:0;padding:0;list-style:none}
+  .day li{position:relative;padding:5px 0 5px 22px;font-size:15px}
+  .day li::before{content:"";position:absolute;left:4px;top:14px;width:7px;height:7px;border-radius:50%;background:var(--c)}
+  .day li.sub{padding-left:42px;font-size:14px;color:#3d4a41}
+  .day li.sub::before{left:26px;width:5px;height:5px;background:var(--line);top:15px}
+  .time{display:inline-block;min-width:74px;font-weight:600;font-variant-numeric:tabular-nums;color:var(--ink)}
+  mark{background:var(--hl);padding:1px 5px;border-radius:4px;font-weight:600;color:inherit}
+  .todo{display:inline-block;background:var(--todo);color:#8a2f1f;padding:1px 7px;border-radius:4px;font-size:12.5px;font-weight:600;margin-left:4px}
+  .opt{display:inline-block;border:1px dashed var(--muted);color:var(--muted);padding:0 7px;border-radius:4px;font-size:12.5px;font-weight:500;margin-left:4px}
+  .stay{margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);font-size:13px;color:var(--muted);display:flex;gap:18px;flex-wrap:wrap}
+  .stay b{color:var(--ink);font-weight:600}
+  /* transfer */
+  .move{display:flex;align-items:center;gap:10px;margin:10px 0 0 30px;font-size:13px;color:var(--muted);padding:6px 0}
+  .move::before{content:"⬇";font-size:16px;color:var(--ink)}
+  .move b{color:var(--ink);font-weight:600}
+  .move a{color:var(--sp);text-decoration:none;border-bottom:1px solid currentColor}
+  /* notes */
+  .notes{margin-top:40px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 22px}
+  .notes h2{margin:0 0 10px;font-size:15px}
+  .notes ul{margin:0;padding-left:20px;font-size:14px}
+  .notes li{margin:4px 0}
+  .notes a{color:var(--sp)}
+  .tbl{width:100%;border-collapse:collapse;font-size:13.5px;margin-top:4px}
+  .tbl th,.tbl td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}
+  .tbl th{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);font-weight:600}
+  .tbl td:nth-child(2),.tbl td:nth-child(3){white-space:nowrap;font-weight:600}
+  .tbl td:last-child{color:var(--muted);font-size:12.5px}
+  @media (max-width:560px){.tbl td:last-child{display:none}.tbl th:last-child{display:none}}
+  footer{margin-top:30px;font-size:12px;color:var(--muted);text-align:center}
+  @media print{
+    body{background:#fff;font-size:12.5px}
+    .wrap{padding:0;max-width:none}
+    .day{break-inside:avoid;box-shadow:none}
+    .hero h1{font-size:30px}
+  }
+  @media (max-width:560px){
+    .wrap{padding:26px 16px 60px}
+    .hero h1{font-size:30px}
+    .day{padding:14px 16px 12px}
+    .time{display:block;min-width:0;margin-bottom:-2px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="kicker">Lịch trình</div>
+    <h1>Tây Bắc 9 ngày</h1>
+    <div class="dates">Thứ Bảy 12/9 → Chủ Nhật 20/9/2026 · Hà Nội – Trạm Tấu – Mù Cang Chải – Sa Pa – Kỳ Quan San</div>
+    <div class="route">
+      <span style="--c:var(--hn)">Hà Nội</span><i>→</i>
+      <span style="--c:var(--tt)">Trạm Tấu</span><i>→</i>
+      <span style="--c:var(--mcc)">Mù Cang Chải</span><i>→</i>
+      <span style="--c:var(--sp)">Sa Pa</span><i>→</i>
+      <span style="--c:var(--kqs)">Kỳ Quan San</span><i>→</i>
+      <span style="--c:var(--sp)">Sa Pa</span><i>→</i>
+      <span style="--c:var(--hn)">Hà Nội</span>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span><b class="h">Điểm nhấn</b> = trải nghiệm chính, không bỏ</span>
+    <span><b class="t">Cần làm</b> = việc phải hỏi / đặt trước</span>
+    <span><b style="border:1px dashed var(--muted)">Tùy chọn</b> = chưa chốt, chọn 1 trong 2</span>
+  </div>
+
+  <!-- ===================== HÀ NỘI ===================== -->
+  <div class="phase" style="--c:var(--hn)"><h2>Xuất phát</h2></div>
+
+  <div class="day" style="--c:var(--hn)">
+    <div class="top"><span class="n">Ngày 1</span><span class="d">Thứ Bảy, 12/9</span><span class="wd">Hà Nội</span></div>
+    <h3>Tập trung ở Hà Nội, tối lên xe đi Trạm Tấu</h3>
+    <ul>
+      <li>Ban ngày ở Hà Nội, chuẩn bị đồ (giày leo núi, áo ấm cho Kỳ Quan San, đồ bơi cho suối nóng).</li>
+      <li><span class="time">Tối</span>Lên xe đi Yên Bái – Trạm Tấu <span class="opt">hoặc đi sáng sớm ngày 2</span></li>
+      <li class="sub">Hỏi nhà xe có chạy thẳng tới suối khoáng nóng Bảo Lâm không, và có tuyến Trạm Tấu → Mù Cang Chải không <span class="todo">Cần làm</span></li>
+    </ul>
+  </div>
+  <div class="move"><b>Hà Nội → Trạm Tấu (Bảo Lâm)</b> ~220 km · xe khách Hà Nội → Nghĩa Lộ 4,5–5 tiếng, rồi taxi/xe ôm Nghĩa Lộ → Trạm Tấu ~30 km, 45 phút (tổng ~5,5–6 tiếng)</div>
+
+  <!-- ===================== TRẠM TẤU ===================== -->
+  <div class="phase" style="--c:var(--tt)"><h2>Trạm Tấu · Yên Bái</h2></div>
+
+  <div class="day" style="--c:var(--tt)">
+    <div class="top"><span class="n">Ngày 2</span><span class="d">Chủ Nhật, 13/9</span><span class="wd">Trạm Tấu</span></div>
+    <h3>Bản trên mây và tắm suối khoáng nóng</h3>
+    <ul>
+      <li><span class="time">Sáng</span>Tới Trạm Tấu, gửi đồ, ăn sáng.</li>
+      <li><span class="time">Trưa – chiều</span><mark>Bản Cu Vai</mark> – bản người Mông trên đỉnh núi, con đường độc đạo giữa biển mây, ruộng bậc thang hai bên.</li>
+      <li class="sub">Đi xe ôm hoặc thuê xe máy từ thị trấn lên, khoảng 12 km đường dốc.</li>
+      <li><span class="time">Chiều tối</span><mark>Suối khoáng nóng Bảo Lâm</mark> – ngâm khoáng nóng nhìn ra ruộng bậc thang, ăn tối tại khu suối.</li>
+    </ul>
+    <div class="stay"><span>Ngủ: <b>Suối khoáng nóng Bảo Lâm, Trạm Tấu</b></span><span>Đặt phòng trước <span class="todo">Cần làm</span></span></div>
+  </div>
+  <div class="move"><b>Trạm Tấu → đèo Khau Phạ</b> ~90 km · 2,5 tiếng &nbsp;·&nbsp; <b>Khau Phạ → A Su Homestay</b> ~25 km · 45 phút &nbsp;(tổng ~115 km · 3–3,5 tiếng)</div>
+
+  <!-- ===================== MÙ CANG CHẢI ===================== -->
+  <div class="phase" style="--c:var(--mcc)"><h2>Mù Cang Chải · mùa lúa chín</h2></div>
+
+  <div class="day" style="--c:var(--mcc)">
+    <div class="top"><span class="n">Ngày 3</span><span class="d">Thứ Hai, 14/9</span><span class="wd">Mù Cang Chải</span></div>
+    <h3>Sang Mù Cang Chải sớm, ngắm Mâm Xôi và bay dù lượn</h3>
+    <ul>
+      <li><span class="time">06:30</span>Xuất phát từ Trạm Tấu đi Mù Cang Chải (Nghĩa Lộ – Tú Lệ – đèo Khau Phạ). Tới Khau Phạ ~9:00, tới homestay ~10:00.</li>
+      <li><span class="time">Trưa</span>Nhận phòng <b>A Su Homestay</b> (Tà Chí Lừ, gần La Pán Tẩn), ăn trưa.</li>
+      <li><span class="time">Chiều</span><mark>Đồi Mâm Xôi Lớn – Mâm Xôi Bé</mark> – biểu tượng ruộng bậc thang Mù Cang Chải, cách homestay ~2 km.</li>
+      <li><span class="time">Chiều muộn</span><mark>Đèo Khau Phạ – bay dù lượn</mark> "Bay trên mùa vàng", 10–15 phút lượn trên thung lũng Lìm Mông.</li>
+      <li class="sub">Đặt lịch bay trước, giá khoảng 2–2,5 triệu/người; tùy gió nên có thể phải đổi sang sáng ngày 4 <span class="todo">Cần làm</span></li>
+    </ul>
+    <div class="stay"><span>Ngủ: <b>A Su Homestay, Mù Cang Chải</b> (đêm 1/2)</span></div>
+  </div>
+
+  <div class="day" style="--c:var(--mcc)">
+    <div class="top"><span class="n">Ngày 4</span><span class="d">Thứ Ba, 15/9</span><span class="wd">Mù Cang Chải</span></div>
+    <h3>Kim Nọi, rừng trúc và hoàng hôn Đồi Móng Ngựa</h3>
+    <ul>
+      <li><span class="time">Sáng</span><mark>Ruộng bậc thang Kim Nọi</mark> – "ruộng bạc" ngay cạnh thị trấn, lên điểm cao nhất chụp toàn cảnh thung lũng.</li>
+      <li><span class="time">Trưa</span>Ăn trưa ở thị trấn Mù Cang Chải, ghé chợ mua táo mèo, mật ong.</li>
+      <li><span class="time">Đầu chiều</span><mark>Rừng trúc Mồ Dề</mark> – đi bộ dưới tán trúc, nắng xuyên rất đẹp để chụp ảnh.</li>
+      <li><span class="time">Chiều muộn</span><mark>Đồi Móng Ngựa – ngắm hoàng hôn</mark> – điểm hoàng hôn đẹp nhất Mù Cang Chải, mặt trời lặn khoảng 17:45.</li>
+      <li><span class="time">Tối</span>Ăn tối tại homestay <span class="opt">hoặc lên xe đi Sa Pa ngay 18:00, ~22:30 tới nơi</span></li>
+    </ul>
+    <div class="stay"><span>Ngủ: <b>A Su Homestay</b> (đêm 2/2) hoặc trên xe đi Sa Pa</span></div>
+  </div>
+  <div class="move"><b>Mù Cang Chải → Sa Pa</b> ~160 km · ô tô riêng 4–4,5 tiếng, xe khách 5–6 tiếng (đường đèo, hay dừng đón khách)</div>
+
+  <!-- ===================== SA PA ===================== -->
+  <div class="phase" style="--c:var(--sp)"><h2>Sa Pa</h2></div>
+
+  <div class="day" style="--c:var(--sp)">
+    <div class="top"><span class="n">Ngày 5</span><span class="d">Thứ Tư, 16/9</span><span class="wd">Sa Pa</span></div>
+    <h3>Sang Sa Pa, nghỉ ngơi và chuẩn bị leo núi</h3>
+    <ul>
+      <li><span class="time">07:00</span>Đi Sa Pa nếu chưa đi tối hôm trước (Than Uyên – Tân Uyên – đèo Ô Quy Hồ), tới Sa Pa ~11:30. <span class="opt">Tùy chọn</span></li>
+      <li><span class="time">Trưa</span>Nhận phòng, ăn trưa.</li>
+      <li><span class="time">Chiều</span>Dạo nhà thờ Đá, chợ Sa Pa, cà phê ngắm Fansipan; đi nhẹ để giữ sức.</li>
+      <li><span class="time">Tối</span>Gặp porter/tour Kỳ Quan San, nhận đồ thuê (túi ngủ, gậy), gửi hành lý không cần thiết ở khách sạn. <span class="todo">Cần làm</span></li>
+    </ul>
+    <div class="stay"><span>Ngủ: <b>Khách sạn Sa Pa</b> (đặt trước, giữ đồ 3 đêm) <span class="todo">Cần làm</span></span></div>
+  </div>
+  <div class="move"><b>Sa Pa → bản Ky Quan San</b> ~55 km · 1,5–2 tiếng (qua Ô Quy Hồ – Mường Hum)</div>
+
+  <!-- ===================== KỲ QUAN SAN ===================== -->
+  <div class="phase" style="--c:var(--kqs)"><h2>Kỳ Quan San · 3.046 m</h2></div>
+
+  <div class="day" style="--c:var(--kqs)">
+    <div class="top"><span class="n">Ngày 6</span><span class="d">Thứ Năm, 17/9</span><span class="wd">Kỳ Quan San</span></div>
+    <h3>Bắt đầu leo, ngủ đêm ở Núi Muối</h3>
+    <ul>
+      <li><span class="time">07:00</span>Xe từ Sa Pa đi bản Ky Quan San, xã Sàng Ma Sáo (Bát Xát), tới nơi ~9:00; xe ôm thêm ~7 km đường xấu vào chân núi.</li>
+      <li><span class="time">10:00</span><mark>Bắt đầu leo lên lán Núi Muối</mark> (~2.100 m), 7–8 tiếng đi bộ qua nương thảo quả, suối lớn và rừng nguyên sinh; ăn trưa dọc đường ~11:30.</li>
+      <li><span class="time">17:00–18:00</span>Tới lán, ăn tối, ngắm biển mây và hoàng hôn ở Núi Muối.</li>
+    </ul>
+    <div class="stay"><span>Ngủ: <b>Lán Núi Muối</b> (đêm 1/2)</span></div>
+  </div>
+
+  <div class="day" style="--c:var(--kqs)">
+    <div class="top"><span class="n">Ngày 7</span><span class="d">Thứ Sáu, 18/9</span><span class="wd">Núi Muối ↔ đỉnh</span></div>
+    <h3>Lên đỉnh Kỳ Quan San</h3>
+    <ul>
+      <li><span class="time">05:30</span>Ra Núi Muối đón bình minh (đi bộ vài phút từ lán), ăn sáng.</li>
+      <li><span class="time">07:00</span>Leo lên <mark>đỉnh Kỳ Quan San 3.046 m</mark> – 4–5 tiếng, qua rừng rêu, thảo nguyên 2.700 m và sống lưng khủng long; tới đỉnh ~11:30–12:00.</li>
+      <li><span class="time">13:00</span>Xuống lại lán Núi Muối, ~3 tiếng, về tới lán ~16:00.</li>
+      <li><span class="time">Chiều</span>Nghỉ ngơi, chụp ảnh biển mây chiều tại Núi Muối.</li>
+    </ul>
+    <div class="stay"><span>Ngủ: <b>Lán Núi Muối</b> (đêm 2/2)</span></div>
+  </div>
+
+  <div class="day" style="--c:var(--kqs)">
+    <div class="top"><span class="n">Ngày 8</span><span class="d">Thứ Bảy, 19/9</span><span class="wd">Núi Muối → Sa Pa</span></div>
+    <h3>Xuống núi, về Sa Pa nghỉ</h3>
+    <ul>
+      <li><span class="time">07:30</span>Xuống núi về bản Ky Quan San, 5–6 tiếng, tới chân núi ~13:00–13:30, ăn trưa tại nhà người Mông.</li>
+      <li><span class="time">14:30</span>Xe về Sa Pa (~2 tiếng), tới nơi ~16:30, nhận lại đồ, tắm rửa.</li>
+      <li><span class="time">Tối</span>Ăn tối thắng cố / lẩu cá hồi, ngâm chân lá thuốc Dao đỏ cho đỡ mỏi.</li>
+    </ul>
+    <div class="stay"><span>Ngủ: <b>Khách sạn Sa Pa</b></span></div>
+  </div>
+
+  <!-- ===================== VỀ ===================== -->
+  <div class="phase" style="--c:var(--sp)"><h2>Kết thúc</h2></div>
+
+  <div class="day" style="--c:var(--sp)">
+    <div class="top"><span class="n">Ngày 9</span><span class="d">Chủ Nhật, 20/9</span><span class="wd">Sa Pa → Hà Nội</span></div>
+    <h3>Chơi Sa Pa buổi sáng, trưa lên xe về</h3>
+    <ul>
+      <li><span class="time">Sáng</span>Cà phê, dạo bản Cát Cát hoặc mua quà ở chợ.</li>
+      <li><span class="time">12:00–13:00</span>Lên xe về Hà Nội (cao tốc Nội Bài – Lào Cai).</li>
+      <li><span class="time">18:00–19:00</span>Về tới Hà Nội. Kết thúc chuyến đi.</li>
+    </ul>
+  </div>
+  <div class="move"><b>Sa Pa → Hà Nội</b> ~320 km · xe giường nằm / limousine 5,5–6 tiếng</div>
+
+  <div class="notes" style="margin-top:34px">
+    <h2>Bảng di chuyển giữa các chặng</h2>
+    <table class="tbl">
+      <tr><th>Chặng</th><th>Km</th><th>Thời gian</th><th>Ghi chú</th></tr>
+      <tr><td>Hà Nội → Nghĩa Lộ → Trạm Tấu</td><td>~220</td><td>5,5–6 h</td><td>Xe khách tới Nghĩa Lộ, taxi 30 km vào Trạm Tấu</td></tr>
+      <tr><td>Trạm Tấu → Khau Phạ → A Su Homestay</td><td>~115</td><td>3–3,5 h</td><td>Qua Tú Lệ, dừng chụp ảnh thêm 30 phút</td></tr>
+      <tr><td>A Su Homestay ↔ thị trấn Mù Cang Chải</td><td>~25</td><td>40–45 phút</td><td>Kim Nọi, Rừng trúc, Móng Ngựa đều ở phía thị trấn</td></tr>
+      <tr><td>Mù Cang Chải → Sa Pa</td><td>~160</td><td>4–4,5 h ô tô · 5–6 h xe khách</td><td>Than Uyên – Tân Uyên – đèo Ô Quy Hồ</td></tr>
+      <tr><td>Sa Pa → bản Ky Quan San</td><td>~55</td><td>1,5–2 h</td><td>+ xe ôm 7 km đường xấu vào chân núi</td></tr>
+      <tr><td>Chân núi → lán Núi Muối (đi bộ)</td><td>~12</td><td>7–8 h</td><td>Xuất phát 10:00, tới lán 17:00–18:00</td></tr>
+      <tr><td>Núi Muối → đỉnh → Núi Muối (đi bộ)</td><td>~10</td><td>4–5 h lên · ~3 h xuống</td><td>Cả cung 30–36 km đi và về</td></tr>
+      <tr><td>Núi Muối → chân núi (đi bộ)</td><td>~12</td><td>5–6 h</td><td>Xuống dốc mỏi gối, cần gậy</td></tr>
+      <tr><td>Sa Pa → Hà Nội</td><td>~320</td><td>5,5–6 h</td><td>Cao tốc Nội Bài – Lào Cai</td></tr>
+    </table>
+  </div>
+
+  <div class="notes">
+    <h2>Việc cần chốt trước ngày đi</h2>
+    <ul>
+      <li>Vé xe Hà Nội → Trạm Tấu (hỏi có dừng ở Bảo Lâm) và xe Trạm Tấu → Mù Cang Chải.</li>
+      <li>Phòng suối khoáng Bảo Lâm (13/9), A Su Homestay (14–15/9), khách sạn Sa Pa (16/9 và 19/9).</li>
+      <li>Đặt bay dù lượn Khau Phạ – bay theo gió, nên để lịch linh hoạt giữa chiều 14/9 và sáng 15/9.</li>
+      <li>Tour hoặc porter Kỳ Quan San 17–19/9 (2 đêm Núi Muối), thuê túi ngủ, kiểm tra dự báo thời tiết.</li>
+      <li>Chốt: đi Sa Pa tối 15/9 (18:00 → ~22:30) hay sáng 16/9 (07:00 → ~11:30). Đi sáng an toàn hơn vì đèo Ô Quy Hồ đẹp và dễ đi ban ngày; đi tối thì được trọn ngày 16/9 ở Sa Pa.</li>
+      <li>Xem tuyến Mù Cang Chải chi tiết trên bản đồ: mở app <i>mu-cang-chai-planner</i>.</li>
+    </ul>
+  </div>
+
+  <footer>Tây Bắc 12–20/9/2026 · Thời gian di chuyển tổng hợp từ VnExpress, Báo Lào Cai, Viettrekking và các nhà xe (9/2026); vẫn nên xác nhận lại với nhà xe và porter.</footer>
+</div>
+</body>
+</html>
