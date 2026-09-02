@@ -30,10 +30,11 @@
   .hero h1{margin:0;font-family:var(--serif);font-weight:400;font-style:italic;font-variation-settings:"SOFT" 100,"WONK" 1;font-size:clamp(76px,14vw,176px);line-height:.86;letter-spacing:-.025em;color:var(--lua)}
   .hero .sub{margin:22px 0 0;max-width:36ch;font-size:clamp(17px,2vw,21px);line-height:1.45;color:var(--may)}
   .hero .sub b{font-weight:600;color:var(--lua)}
-  .route{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:4px 0;font-size:14px;color:var(--may-2)}
-  .route li+li::before{content:"";display:inline-block;width:14px;height:1px;background:var(--may-3);margin:0 10px;vertical-align:middle}
-  .route li{white-space:nowrap}
+  .route{list-style:none;margin:18px 0 0;padding:0;max-width:700px;display:flex;flex-wrap:wrap;gap:4px 0;font-size:14px;color:var(--may-2)}
+  .route li{white-space:nowrap;display:inline-flex;align-items:center}
+  .route li:not(:last-child)::after{content:"";width:14px;height:1px;background:var(--may-3);margin:0 10px}
   .route li.fly{color:var(--sg)}
+  .route li.fly::after{margin-left:4px}
   .profile{display:block;width:100%;height:auto;margin-top:-6vw;position:relative;z-index:1}
   .profile text{font-family:var(--sans)}
   .profile .pl{font-family:var(--serif);font-style:italic;font-size:22px;fill:var(--may);font-variation-settings:"SOFT" 100,"WONK" 1}
