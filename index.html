@@ -7,33 +7,33 @@
 <title>Mùa vàng · Tây Bắc 12–20/9/2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Be+Vietnam+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..700,0..100,0..1;1,9..144,300..700,0..100,0..1&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   /* ── Bảng màu: vải chàm người Mông, lúa chín, mạ non, chỉ thổ cẩm ── */
   :root{
-    --cham:#12203A; --cham-2:#182A4B; --cham-3:#22365C;
-    --may:#EEE8DA; --may-2:#A9B0BC; --may-3:#6E7889;
-    --lua:#E5B040; --ma:#8FB27A; --tho:#E0527F; --dat:#C4693A; --hn:#8FA3C2;
-    --line:rgba(238,232,218,.13);
+    --cham:#12203A; --cham-2:#182A4B; --cham-3:#25395F;
+    --may:#F3EEE1; --may-2:#BFC6D2; --may-3:#7F8A9C;
+    --lua:#EDB94A; --ma:#9CC286; --tho:#EE6A95; --dat:#D4784A; --hn:#9DB1CF; --sg:#E8A0A0;
+    --line:rgba(243,238,225,.14);
     --serif:"Fraunces","Georgia",serif;
     --sans:"Be Vietnam Pro","Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0;background:var(--cham);color:var(--may);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased}
+  body{margin:0;background:var(--cham);color:var(--may);font-family:var(--sans);font-size:16.5px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
   a{color:inherit}
   :focus-visible{outline:2px solid var(--lua);outline-offset:3px;border-radius:2px}
-  .serif{font-family:var(--serif);font-variation-settings:"SOFT" 100,"WONK" 1}
 
   /* ── Hero: mặt cắt độ cao của cả chuyến đi ── */
   .hero{position:relative;overflow:hidden;padding-top:clamp(36px,6vw,72px)}
   .hero-text{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 24px}
   .hero h1{margin:0;font-family:var(--serif);font-weight:400;font-style:italic;font-variation-settings:"SOFT" 100,"WONK" 1;font-size:clamp(76px,14vw,176px);line-height:.86;letter-spacing:-.025em;color:var(--lua)}
-  .hero .sub{margin:22px 0 0;max-width:34ch;font-size:clamp(17px,2vw,21px);line-height:1.45;color:var(--may)}
-  .hero .sub b{font-weight:500;color:var(--may)}
+  .hero .sub{margin:22px 0 0;max-width:36ch;font-size:clamp(17px,2vw,21px);line-height:1.45;color:var(--may)}
+  .hero .sub b{font-weight:600;color:var(--lua)}
   .route{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:4px 0;font-size:14px;color:var(--may-2)}
   .route li+li::before{content:"";display:inline-block;width:14px;height:1px;background:var(--may-3);margin:0 10px;vertical-align:middle}
   .route li{white-space:nowrap}
+  .route li.fly{color:var(--sg)}
   .profile{display:block;width:100%;height:auto;margin-top:-6vw;position:relative;z-index:1}
   .profile text{font-family:var(--sans)}
   .profile .pl{font-family:var(--serif);font-style:italic;font-size:22px;fill:var(--may);font-variation-settings:"SOFT" 100,"WONK" 1}
@@ -43,13 +43,23 @@
   .profile a:hover .dn,.profile a:focus-visible .dn{fill:var(--cham)}
   .profile a:focus-visible{outline:none}
   .profile a circle{transition:fill .15s}
+  /* Một khoảnh khắc khi tải: đường núi tự vẽ, ruộng hiện dần, các ngày lần lượt sáng lên */
+  .anim .ridge-line{stroke-dasharray:2700;stroke-dashoffset:2700;animation:draw 1.8s cubic-bezier(.4,0,.2,1) .2s forwards}
+  .anim .terr-fill{opacity:0;animation:fade 1.2s ease 1s forwards}
+  .anim .fog-g{opacity:0;animation:fade 1.6s ease 1.6s forwards}
+  .anim .trail{opacity:0;animation:fade .8s ease 1.4s forwards}
+  .anim .dot{transform-box:fill-box;transform-origin:center;transform:scale(0);animation:pop .5s cubic-bezier(.3,1.5,.5,1) forwards;animation-delay:calc(1.1s + var(--i)*.11s)}
+  .anim .pl,.anim .profile .al{opacity:0;animation:fade .7s ease 1.9s forwards}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes fade{to{opacity:1}}
+  @keyframes pop{to{transform:scale(1)}}
   @media (max-width:640px){
     .profile .pl,.profile .al{display:none}
     .profile{margin-top:8px}
   }
 
   /* ── Thanh dính: bạn đang ở độ cao nào ── */
-  .bar{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;gap:16px;padding:8px 20px;background:rgba(18,32,58,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transform:translateY(-100%);transition:transform .3s ease}
+  .bar{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;gap:16px;padding:8px 20px;background:rgba(18,32,58,.88);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transform:translateY(-100%);transition:transform .3s ease}
   .bar.on{transform:none}
   .bar .spark{position:relative;width:150px;height:40px;flex:none}
   .bar svg{display:block;width:100%;height:100%;overflow:visible}
@@ -59,86 +69,111 @@
   .bar .dp b{color:var(--may);font-weight:500}
 
   /* ── Cột nội dung ── */
-  .wrap{max-width:780px;margin:0 auto;padding:16px 24px 96px}
+  .wrap{max-width:800px;margin:0 auto;padding:16px 24px 96px}
   .legend{display:flex;flex-wrap:wrap;gap:10px 24px;margin:8px 0 12px;font-size:13.5px;color:var(--may-2)}
   .legend span{display:inline-flex;align-items:center;gap:8px}
 
-  /* Chặng */
-  .phase{--c:var(--may-2)}
-  .phase-h{display:flex;align-items:baseline;gap:16px;margin:64px 0 4px}
-  .phase-h h2{margin:0;font-family:var(--serif);font-weight:400;font-variation-settings:"SOFT" 100,"WONK" 1;font-size:clamp(30px,4.5vw,38px);line-height:1;letter-spacing:-.015em;color:var(--c)}
-  .phase-h .alt{font-size:13px;color:var(--may-2);font-variant-numeric:tabular-nums;white-space:nowrap}
+  /* Chặng: mỗi chặng một sắc trời riêng, trải hết chiều ngang màn hình */
+  .phase{--c:var(--may-2);position:relative;padding:8px 0 24px}
+  .phase::before{content:"";position:absolute;top:0;bottom:0;left:50%;width:100vw;transform:translateX(-50%);z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(120% 55% at 50% 0%, color-mix(in srgb,var(--c) 16%,transparent), transparent 70%),
+      repeating-linear-gradient(to bottom, color-mix(in srgb,var(--c) 7%,transparent) 0 1px, transparent 1px 34px)}
+  .phase-h{display:flex;align-items:baseline;gap:16px;margin:56px 0 8px}
+  .phase-h h2{margin:0;font-family:var(--serif);font-weight:400;font-variation-settings:"SOFT" 100,"WONK" 1;font-size:clamp(34px,5vw,46px);line-height:1;letter-spacing:-.015em;color:var(--c)}
+  .phase-h .alt{font-size:14px;color:var(--may-2);font-variant-numeric:tabular-nums;white-space:nowrap}
   .phase-h::after{content:"";flex:1;min-width:40px;height:7px;align-self:center;background:repeating-linear-gradient(to bottom,var(--c) 0 1px,transparent 1px 3px);opacity:.55}
 
   /* Ngày */
-  .day{display:grid;grid-template-columns:72px 1fr;column-gap:20px;padding:30px 0 26px;border-top:1px solid var(--line);scroll-margin-top:64px}
-  .day:first-of-type{border-top:0}
-  .num{grid-row:1/span 4;font-family:var(--serif);font-weight:300;font-variation-settings:"SOFT" 100,"WONK" 1;font-size:72px;line-height:.78;letter-spacing:-.04em;color:var(--c);margin-top:2px}
-  .meta{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;font-size:14px;color:var(--may-2)}
-  .meta time{font-weight:500;color:var(--may)}
+  .day{display:grid;grid-template-columns:76px 1fr;column-gap:20px;padding:34px 0 28px;border-top:1px solid var(--line);scroll-margin-top:64px}
+  .phase-h+.day{border-top:0}
+  .num{grid-row:1/span 4;font-family:var(--serif);font-weight:300;font-variation-settings:"SOFT" 100,"WONK" 1;font-size:78px;line-height:.78;letter-spacing:-.04em;color:var(--c);margin-top:2px}
+  .meta{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 14px;font-size:14.5px;color:var(--may-2)}
+  .meta time{font-weight:600;color:var(--may)}
   .meta .pl{color:var(--c);font-weight:500}
   .meta .al{font-variant-numeric:tabular-nums}
-  .day h3{margin:6px 0 16px;font-family:var(--serif);font-weight:400;font-variation-settings:"SOFT" 100,"WONK" 0;font-size:23px;line-height:1.25;letter-spacing:-.01em;color:var(--may)}
+  .day h3{margin:6px 0 18px;font-family:var(--serif);font-weight:400;font-variation-settings:"SOFT" 100,"WONK" 0;font-size:25px;line-height:1.25;letter-spacing:-.01em;color:var(--may)}
+
+  /* Việc trong ngày: rail thời gian, mỗi việc một chấm màu của chặng */
   .plan{list-style:none;margin:0;padding:0}
-  .plan li{display:grid;grid-template-columns:104px 1fr;column-gap:14px;padding:7px 0;font-size:15.5px}
-  .plan .t{font-weight:500;color:var(--may-2);font-variant-numeric:tabular-nums;font-size:14px;padding-top:2px}
-  .plan li.sub{font-size:14px;color:var(--may-2)}
-  .plan li.sub .w{border-left:2px solid var(--cham-3);padding-left:12px}
-  mark{background:none;color:var(--lua);font-weight:600;text-decoration:underline;text-decoration-color:rgba(229,176,64,.4);text-decoration-thickness:1px;text-underline-offset:4px}
-  .todo,.opt{display:inline-flex;align-items:center;gap:6px;vertical-align:1px;margin-left:6px;padding:1px 8px 1px 6px;border-radius:3px;font-size:12px;font-weight:500;line-height:1.5;white-space:nowrap}
-  .todo{color:var(--lua);border:1px solid rgba(229,176,64,.55)}
+  .plan li{display:grid;grid-template-columns:100px 1fr;column-gap:0;font-size:16.5px}
+  .plan .t{font-weight:600;color:var(--may);font-variant-numeric:tabular-nums;font-size:14.5px;padding:10px 10px 0 0;line-height:1.5}
+  .plan .w{position:relative;padding:8px 0 8px 26px}
+  .plan .w::before{content:"";position:absolute;left:0;top:calc(8px + .5em);width:11px;height:11px;border-radius:50%;background:var(--c);box-shadow:0 0 0 3px var(--cham);z-index:1}
+  .plan .w::after{content:"";position:absolute;left:5px;top:0;bottom:0;width:1px;background:var(--line)}
+  .plan li:first-child .w::after{top:calc(8px + .5em)}
+  .plan li:last-child .w::after{bottom:calc(100% - 8px - .5em)}
+  .plan li.sub{font-size:14.5px;color:var(--may-2)}
+  .plan li.sub .w{padding-top:2px;padding-bottom:10px}
+  .plan li.sub .w::before{width:7px;height:7px;left:2px;top:calc(2px + .55em);background:var(--cham);border:1.5px solid var(--c)}
+  .plan .w b{font-weight:600;color:var(--may)}
+  mark{background:none;color:var(--lua);font-weight:600;text-decoration:underline;text-decoration-color:rgba(237,185,74,.45);text-decoration-thickness:1px;text-underline-offset:4px}
+  .todo,.opt{display:inline-flex;align-items:center;gap:6px;vertical-align:1px;margin-left:6px;padding:1px 8px 1px 6px;border-radius:3px;font-size:12.5px;font-weight:500;line-height:1.5;white-space:nowrap}
+  .todo{color:var(--lua);border:1px solid rgba(237,185,74,.55);background:rgba(237,185,74,.08)}
   .todo::before{content:"";width:8px;height:8px;border:1px solid currentColor;border-radius:1px}
   .opt{color:var(--may-2);border:1px dashed var(--may-3)}
-  .stay{margin:14px 0 0;padding-top:12px;border-top:1px dashed var(--line);font-size:14px;color:var(--may-2)}
-  .stay b{font-weight:500;color:var(--may)}
-  .stay em{font-style:normal;color:var(--c);font-weight:500;margin-right:8px}
+  .fly{display:inline-flex;align-items:center;gap:6px;color:var(--sg);font-weight:600}
+  .fly::before{content:"";width:14px;height:14px;background:currentColor;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z'/%3E%3C/svg%3E") center/contain no-repeat;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z'/%3E%3C/svg%3E") center/contain no-repeat}
+  .stay{margin:16px 0 0;padding:10px 14px;border-radius:8px;background:color-mix(in srgb,var(--c) 10%,transparent);border:1px solid color-mix(in srgb,var(--c) 28%,transparent);font-size:14.5px;color:var(--may-2);display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline}
+  .stay b{font-weight:600;color:var(--may)}
+  .stay em{font-style:normal;color:var(--c);font-weight:600;letter-spacing:.02em}
 
   /* Di chuyển giữa hai ngày */
-  .move{margin:0 0 0 92px;padding:12px 0 12px 18px;border-left:1px dashed var(--may-3);font-size:13.5px;color:var(--may-2);line-height:1.55}
-  .move b{display:block;font-weight:500;color:var(--may)}
+  .move{margin:0 0 0 96px;padding:14px 0 14px 26px;position:relative;font-size:14px;color:var(--may-2);line-height:1.55}
+  .move::before{content:"";position:absolute;left:5px;top:0;bottom:0;width:0;border-left:1px dashed var(--may-3)}
+  .move::after{content:"";position:absolute;left:1px;bottom:0;width:9px;height:9px;border-right:1px dashed var(--may-3);border-bottom:1px dashed var(--may-3);transform:rotate(45deg)}
+  .move b{display:block;font-weight:600;color:var(--may);font-size:14.5px}
   .move a{color:var(--ma)}
 
   /* Bảng và việc cần chốt */
   .notes{margin-top:72px}
-  .notes h2{margin:0 0 14px;font-family:var(--serif);font-weight:400;font-variation-settings:"SOFT" 100,"WONK" 1;font-size:30px;line-height:1.1;letter-spacing:-.015em;color:var(--may)}
-  .tbl{width:100%;border-collapse:collapse;font-size:14px}
-  .tbl th,.tbl td{text-align:left;padding:10px 10px 10px 0;border-bottom:1px solid var(--line);vertical-align:top}
-  .tbl th{font-size:12.5px;font-weight:500;color:var(--may-2)}
-  .tbl td:nth-child(2),.tbl td:nth-child(3){white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--lua)}
-  .tbl td:last-child{color:var(--may-2);font-size:13px}
+  .notes h2{margin:0 0 16px;font-family:var(--serif);font-weight:400;font-variation-settings:"SOFT" 100,"WONK" 1;font-size:32px;line-height:1.1;letter-spacing:-.015em;color:var(--may)}
+  .tbl{width:100%;border-collapse:collapse;font-size:14.5px}
+  .tbl th,.tbl td{text-align:left;padding:11px 10px 11px 0;border-bottom:1px solid var(--line);vertical-align:top}
+  .tbl th{font-size:13px;font-weight:500;color:var(--may-2)}
+  .tbl td:nth-child(2),.tbl td:nth-child(3){white-space:nowrap;font-variant-numeric:tabular-nums;color:var(--lua);font-weight:500}
+  .tbl td:last-child{color:var(--may-2);font-size:13.5px}
+  .tbl tr.f td:first-child{color:var(--sg)}
   .check{list-style:none;margin:0;padding:0}
   .check li{border-bottom:1px solid var(--line)}
-  .check label{display:grid;grid-template-columns:20px 1fr;gap:14px;padding:12px 0;cursor:pointer;font-size:15px;line-height:1.55}
+  .check label{display:grid;grid-template-columns:20px 1fr;gap:14px;padding:13px 0;cursor:pointer;font-size:15.5px;line-height:1.55}
   .check input{appearance:none;-webkit-appearance:none;margin:5px 0 0;width:18px;height:18px;border:1.5px solid var(--may-3);border-radius:3px;background:transparent;cursor:pointer;display:grid;place-content:center}
   .check input::before{content:"";width:10px;height:10px;border-radius:1px;background:var(--lua);transform:scale(0);transition:transform .12s}
   .check input:checked{border-color:var(--lua)}
   .check input:checked::before{transform:scale(1)}
   .check input:checked+span{color:var(--may-3);text-decoration:line-through;text-decoration-color:var(--may-3)}
-  .check i{font-style:normal;color:var(--may-2);font-size:13.5px}
-  footer{max-width:780px;margin:64px auto 0;padding:24px 24px 0;border-top:1px solid var(--line);font-size:12.5px;color:var(--may-3);line-height:1.6}
+  .check i{font-style:normal;color:var(--may-2);font-size:14px}
+  footer{max-width:800px;margin:64px auto 0;padding:24px 24px 0;border-top:1px solid var(--line);font-size:12.5px;color:var(--may-3);line-height:1.6}
 
   @media (max-width:640px){
+    body{font-size:16px}
     .wrap{padding:8px 18px 72px}
-    .day{grid-template-columns:1fr;row-gap:0;padding:24px 0 22px}
-    .num{grid-row:auto;font-size:52px;margin-bottom:8px}
-    .day h3{font-size:20px}
-    .plan li{grid-template-columns:1fr;row-gap:1px;padding:8px 0}
-    .plan .t{font-size:12.5px}
-    .plan li.sub .w{margin-top:2px}
+    .day{grid-template-columns:1fr;row-gap:0;padding:26px 0 22px}
+    .num{grid-row:auto;font-size:56px;margin-bottom:8px}
+    .day h3{font-size:21px}
+    .plan li{grid-template-columns:1fr;font-size:16px}
+    .plan .t{padding:10px 0 0 26px;font-size:13px;color:var(--c)}
+    .plan .w{padding-top:0}
+    .plan .w::before{top:.45em}
+    .plan li:first-child .w::after{top:.45em}
+    .plan li:last-child .w::after{bottom:calc(100% - .45em)}
+    .plan li.sub .t{display:none}
     .move{margin-left:0}
     .tbl td:last-child,.tbl th:last-child{display:none}
-    .phase-h{margin-top:48px}
+    .phase-h{margin-top:44px}
     .bar{gap:12px;padding:8px 14px}
     .bar .spark{width:110px;height:34px}
   }
   @media (prefers-reduced-motion:reduce){
     html{scroll-behavior:auto}
     .bar,.bar .mk,.profile a circle,.check input::before{transition:none}
+    .anim .ridge-line,.anim .terr-fill,.anim .fog-g,.anim .trail,.anim .dot,.anim .pl,.anim .profile .al{animation:none;opacity:1;transform:none;stroke-dashoffset:0}
   }
   @media print{
-    :root{--cham:#fff;--may:#1A2233;--may-2:#4C5566;--may-3:#7A8393;--line:#D9D9D9;--cham-3:#D9D9D9;--lua:#9A6A05;--ma:#3E7A4A;--tho:#B0325E;--dat:#9E4E20;--hn:#4E6789}
+    :root{--cham:#fff;--may:#1A2233;--may-2:#4C5566;--may-3:#7A8393;--line:#D9D9D9;--cham-3:#D9D9D9;--lua:#9A6A05;--ma:#3E7A4A;--tho:#B0325E;--dat:#9E4E20;--hn:#4E6789;--sg:#9E3A3A}
     body{font-size:12.5px}
     .bar{display:none}
+    .phase::before{display:none}
     .hero h1{font-size:64px}
     .profile{margin-top:0}
     .day{break-inside:avoid}
@@ -152,14 +187,14 @@
 <header class="hero">
   <div class="hero-text">
     <h1>Mùa vàng</h1>
-    <p class="sub">Chín ngày Tây Bắc, từ thứ Bảy <b>12</b> đến Chủ Nhật <b>20 tháng 9, 2026</b>, đi từ đồng bằng lên đỉnh 3.046 m rồi về.</p>
+    <p class="sub">Chín ngày Tây Bắc: bay ra Hà Nội sáng thứ Bảy <b>12/9</b>, lên đỉnh 3.046 m, rồi bay về Sài Gòn đêm Chủ Nhật <b>20/9/2026</b>.</p>
     <ol class="route">
-      <li>Hà Nội</li><li>Trạm Tấu</li><li>Mù Cang Chải</li><li>Sa Pa</li><li>Kỳ Quan San</li><li>Sa Pa</li><li>Hà Nội</li>
+      <li class="fly">Sài Gòn</li><li>Hà Nội</li><li>Trạm Tấu</li><li>Mù Cang Chải</li><li>Sa Pa</li><li>Kỳ Quan San</li><li>Sa Pa</li><li>Nội Bài</li><li class="fly">Sài Gòn</li>
     </ol>
   </div>
 
   <!-- Mặt cắt độ cao: 9 ngày chấm trên sườn núi, ruộng bậc thang là các dải ngang -->
-  <svg class="profile" viewBox="0 0 1200 520" role="img" aria-label="Biểu đồ độ cao của chuyến đi: Hà Nội 10 m, Trạm Tấu 800 m, Mù Cang Chải 1.100 m, Sa Pa 1.600 m, đỉnh Kỳ Quan San 3.046 m, về Hà Nội">
+  <svg class="profile" viewBox="0 0 1200 520" role="img" aria-label="Biểu đồ độ cao của chuyến đi: bay từ Sài Gòn ra Hà Nội 10 m, Trạm Tấu 800 m, Mù Cang Chải 1.100 m, Sa Pa 1.600 m, đỉnh Kỳ Quan San 3.046 m, về Nội Bài bay vào Sài Gòn">
     <defs>
       <path id="ridge" d="M0,470 C6.7,467.5,26.7,455.2,40,455 C53.3,454.8,62.5,471.7,80,468.8 C97.5,465.9,123.3,453.9,145,437.5 C166.7,421.1,188.3,388.2,210,370.2 C231.7,352.2,253.3,335.7,275,329.5 C296.7,323.3,318.3,328.9,340,332.8 C361.7,336.7,383.3,350.9,405,353 C426.7,355.1,448.3,357.1,470,345.2 C491.7,333.3,513.3,294.3,535,281.8 C556.7,269.3,578.3,275.5,600,270.4 C621.7,265.3,643.3,261.6,665,251.2 C686.7,240.8,708.3,230,730,208 C751.7,186,773.3,138.7,795,119 C816.7,99.3,838.3,76.5,860,90 C881.7,103.5,903.3,170.1,925,200.2 C946.7,230.3,968.3,244.8,990,270.4 C1011.7,296,1033.3,320.5,1055,353.6 C1076.7,386.7,1102.5,451.9,1120,468.8 C1137.5,485.7,1146.7,454.8,1160,455 C1173.3,455.2,1193.3,467.5,1200,470"/>
       <clipPath id="mtn"><path d="M0,470 C6.7,467.5,26.7,455.2,40,455 C53.3,454.8,62.5,471.7,80,468.8 C97.5,465.9,123.3,453.9,145,437.5 C166.7,421.1,188.3,388.2,210,370.2 C231.7,352.2,253.3,335.7,275,329.5 C296.7,323.3,318.3,328.9,340,332.8 C361.7,336.7,383.3,350.9,405,353 C426.7,355.1,448.3,357.1,470,345.2 C491.7,333.3,513.3,294.3,535,281.8 C556.7,269.3,578.3,275.5,600,270.4 C621.7,265.3,643.3,261.6,665,251.2 C686.7,240.8,708.3,230,730,208 C751.7,186,773.3,138.7,795,119 C816.7,99.3,838.3,76.5,860,90 C881.7,103.5,903.3,170.1,925,200.2 C946.7,230.3,968.3,244.8,990,270.4 C1011.7,296,1033.3,320.5,1055,353.6 C1076.7,386.7,1102.5,451.9,1120,468.8 C1137.5,485.7,1146.7,454.8,1160,455 C1173.3,455.2,1193.3,467.5,1200,470 L1200,520 L0,520 Z"/></clipPath>
@@ -177,18 +212,24 @@
       <filter id="fog" x="-20%" y="-200%" width="140%" height="500%"><feGaussianBlur stdDeviation="14"/></filter>
     </defs>
 
-    <g clip-path="url(#mtn)">
+    <g class="terr-fill" clip-path="url(#mtn)">
       <rect width="1200" height="520" fill="url(#terr)"/>
       <rect width="1200" height="520" fill="url(#bands)"/>
     </g>
-    <use href="#ridge" fill="none" stroke="#F5D27A" stroke-width="1.4" stroke-opacity=".9"/>
+    <use class="ridge-line" href="#ridge" fill="none" stroke="#F5D27A" stroke-width="1.4" stroke-opacity=".9"/>
 
     <!-- biển mây -->
-    <ellipse cx="560" cy="336" rx="640" ry="22" fill="#EEE8DA" opacity=".22" filter="url(#fog)"/>
-    <ellipse cx="960" cy="372" rx="260" ry="16" fill="#EEE8DA" opacity=".18" filter="url(#fog)"/>
+    <g class="fog-g">
+      <ellipse cx="560" cy="336" rx="640" ry="22" fill="#EEE8DA" opacity=".22" filter="url(#fog)"/>
+      <ellipse cx="960" cy="372" rx="260" ry="16" fill="#EEE8DA" opacity=".18" filter="url(#fog)"/>
+    </g>
 
-    <!-- đường đi qua 9 ngày -->
-    <polyline points="80,468.8 210,370.2 340,332.8 470,345.2 600,270.4 730,208 860,90 990,270.4 1120,468.8" fill="none" stroke="#EEE8DA" stroke-opacity=".35" stroke-width="1" stroke-dasharray="2 6" stroke-linecap="round"/>
+    <!-- đường đi qua 9 ngày, hai đầu là chuyến bay -->
+    <g class="trail" fill="none" stroke-linecap="round">
+      <polyline points="80,468.8 210,370.2 340,332.8 470,345.2 600,270.4 730,208 860,90 990,270.4 1120,468.8" stroke="#EEE8DA" stroke-opacity=".35" stroke-width="1" stroke-dasharray="2 6"/>
+      <path d="M-10,400 Q40,392 80,458" stroke="#E8A0A0" stroke-opacity=".7" stroke-width="1.2" stroke-dasharray="3 5"/>
+      <path d="M1120,458 Q1160,392 1210,400" stroke="#E8A0A0" stroke-opacity=".7" stroke-width="1.2" stroke-dasharray="3 5"/>
+    </g>
 
     <!-- tên nơi -->
     <text class="pl" x="216" y="352" text-anchor="middle">Trạm Tấu<tspan class="al" dx="6" dy="-2">800 m</tspan></text>
@@ -196,18 +237,20 @@
     <text class="pl" x="600" y="250" text-anchor="middle">Sa Pa<tspan class="al" dx="6" dy="-2">1.600 m</tspan></text>
     <text class="pl" x="860" y="66" text-anchor="middle">Kỳ Quan San<tspan class="al" dx="6" dy="-2">3.046 m</tspan></text>
     <text class="al" x="80" y="500" text-anchor="middle">Hà Nội 10 m</text>
-    <text class="al" x="1120" y="500" text-anchor="middle">Hà Nội</text>
+    <text class="al" x="1120" y="500" text-anchor="middle">Nội Bài</text>
+    <text class="al" x="22" y="388" text-anchor="start" fill="#E8A0A0">bay 05:00 từ Sài Gòn</text>
+    <text class="al" x="1178" y="388" text-anchor="end" fill="#E8A0A0">bay 23:25 về Sài Gòn</text>
 
     <!-- chấm ngày, bấm để nhảy tới -->
-    <a href="#d1"><circle cx="80" cy="468.8" r="11" fill="#12203A" stroke="#8FA3C2" stroke-width="1.5"/><text class="dn" x="80" y="468.8">1</text></a>
-    <a href="#d2"><circle cx="210" cy="370.2" r="11" fill="#12203A" stroke="#C4693A" stroke-width="1.5"/><text class="dn" x="210" y="370.2">2</text></a>
-    <a href="#d3"><circle cx="340" cy="332.8" r="11" fill="#12203A" stroke="#E5B040" stroke-width="1.5"/><text class="dn" x="340" y="332.8">3</text></a>
-    <a href="#d4"><circle cx="470" cy="345.2" r="11" fill="#12203A" stroke="#E5B040" stroke-width="1.5"/><text class="dn" x="470" y="345.2">4</text></a>
-    <a href="#d5"><circle cx="600" cy="270.4" r="11" fill="#12203A" stroke="#8FB27A" stroke-width="1.5"/><text class="dn" x="600" y="270.4">5</text></a>
-    <a href="#d6"><circle cx="730" cy="208" r="11" fill="#12203A" stroke="#E0527F" stroke-width="1.5"/><text class="dn" x="730" y="208">6</text></a>
-    <a href="#d7"><circle cx="860" cy="90" r="11" fill="#12203A" stroke="#E0527F" stroke-width="1.5"/><text class="dn" x="860" y="90">7</text></a>
-    <a href="#d8"><circle cx="990" cy="270.4" r="11" fill="#12203A" stroke="#E0527F" stroke-width="1.5"/><text class="dn" x="990" y="270.4">8</text></a>
-    <a href="#d9"><circle cx="1120" cy="468.8" r="11" fill="#12203A" stroke="#8FB27A" stroke-width="1.5"/><text class="dn" x="1120" y="468.8">9</text></a>
+    <a class="dot" style="--i:0" href="#d1"><circle cx="80" cy="468.8" r="11" fill="#12203A" stroke="#9DB1CF" stroke-width="1.5"/><text class="dn" x="80" y="468.8">1</text></a>
+    <a class="dot" style="--i:1" href="#d2"><circle cx="210" cy="370.2" r="11" fill="#12203A" stroke="#D4784A" stroke-width="1.5"/><text class="dn" x="210" y="370.2">2</text></a>
+    <a class="dot" style="--i:2" href="#d3"><circle cx="340" cy="332.8" r="11" fill="#12203A" stroke="#EDB94A" stroke-width="1.5"/><text class="dn" x="340" y="332.8">3</text></a>
+    <a class="dot" style="--i:3" href="#d4"><circle cx="470" cy="345.2" r="11" fill="#12203A" stroke="#EDB94A" stroke-width="1.5"/><text class="dn" x="470" y="345.2">4</text></a>
+    <a class="dot" style="--i:4" href="#d5"><circle cx="600" cy="270.4" r="11" fill="#12203A" stroke="#9CC286" stroke-width="1.5"/><text class="dn" x="600" y="270.4">5</text></a>
+    <a class="dot" style="--i:5" href="#d6"><circle cx="730" cy="208" r="11" fill="#12203A" stroke="#EE6A95" stroke-width="1.5"/><text class="dn" x="730" y="208">6</text></a>
+    <a class="dot" style="--i:6" href="#d7"><circle cx="860" cy="90" r="11" fill="#12203A" stroke="#EE6A95" stroke-width="1.5"/><text class="dn" x="860" y="90">7</text></a>
+    <a class="dot" style="--i:7" href="#d8"><circle cx="990" cy="270.4" r="11" fill="#12203A" stroke="#EE6A95" stroke-width="1.5"/><text class="dn" x="990" y="270.4">8</text></a>
+    <a class="dot" style="--i:8" href="#d9"><circle cx="1120" cy="468.8" r="11" fill="#12203A" stroke="#9CC286" stroke-width="1.5"/><text class="dn" x="1120" y="468.8">9</text></a>
   </svg>
 </header>
 
@@ -229,15 +272,19 @@
 
   <!-- ═══════════ HÀ NỘI ═══════════ -->
   <section class="phase" style="--c:var(--hn)">
-    <div class="phase-h"><h2>Xuất phát</h2><span class="alt">Hà Nội, 10 m</span></div>
+    <div class="phase-h"><h2>Xuất phát</h2><span class="alt">Sài Gòn bay Hà Nội, 10 m</span></div>
 
     <article class="day" id="d1" data-n="1" data-place="Hà Nội" data-alt="10 m">
       <div class="num" aria-hidden="true">1</div>
-      <div class="meta"><time datetime="2026-09-12">Thứ Bảy 12/9</time><span class="pl">Hà Nội</span></div>
-      <h3>Tập trung ở Hà Nội, tối lên xe đi Trạm Tấu</h3>
+      <div class="meta"><time datetime="2026-09-12">Thứ Bảy 12/9</time><span class="pl">Sài Gòn bay ra Hà Nội</span></div>
+      <h3>Bay chuyến sớm ra Hà Nội, chơi phố cổ một ngày, tối lên xe đi Trạm Tấu</h3>
       <ol class="plan">
-        <li><span class="t">Ban ngày</span><span class="w">Ở Hà Nội, chuẩn bị đồ: giày leo núi, áo ấm cho Kỳ Quan San, đồ bơi cho suối nóng.</span></li>
-        <li><span class="t">Tối</span><span class="w">Lên xe đi Yên Bái, Trạm Tấu <span class="opt">hoặc đi sáng sớm ngày 2</span></span></li>
+        <li><span class="t">03:30</span><span class="w">Có mặt ở Tân Sơn Nhất làm thủ tục. Gậy leo núi bỏ vào hành lý ký gửi.</span></li>
+        <li><span class="t">05:00</span><span class="w"><span class="fly">Bay Tân Sơn Nhất đi Nội Bài</span>, khoảng 2 tiếng 10 phút, hạ cánh khoảng 07:10.</span></li>
+        <li><span class="t">07:30</span><span class="w">Taxi hoặc xe buýt 86 vào trung tâm, 45 phút đến 1 tiếng. Gửi hành lý ở khách sạn ngày hoặc quán cà phê nhận giữ đồ để đi chơi cho nhẹ.</span></li>
+        <li><span class="t">Sáng</span><span class="w">Ăn phở, uống cà phê trứng, dạo Hồ Gươm và phố cổ.</span></li>
+        <li><span class="t">Trưa, chiều</span><span class="w">Ăn bún chả, ghé Văn Miếu hoặc Hoàng thành Thăng Long, cà phê phố đường tàu. Mua bổ sung đồ leo núi nếu còn thiếu: giày, áo ấm cho Kỳ Quan San, đồ bơi cho suối nóng.</span></li>
+        <li><span class="t">Tối</span><span class="w">Ăn tối rồi lên xe đi Yên Bái, Trạm Tấu <span class="opt">hoặc ngủ Hà Nội, đi sáng sớm ngày 2</span></span></li>
         <li class="sub"><span class="t"></span><span class="w">Hỏi nhà xe có chạy thẳng tới suối khoáng nóng Bảo Lâm không, và có tuyến Trạm Tấu đi Mù Cang Chải không <span class="todo">Cần làm</span></span></li>
       </ol>
     </article>
@@ -258,7 +305,7 @@
         <li class="sub"><span class="t"></span><span class="w">Đi xe ôm hoặc thuê xe máy từ thị trấn lên, khoảng 12 km đường dốc.</span></li>
         <li><span class="t">Chiều tối</span><span class="w"><mark>Suối khoáng nóng Bảo Lâm</mark>, ngâm khoáng nóng nhìn ra ruộng bậc thang, ăn tối tại khu suối.</span></li>
       </ol>
-      <p class="stay"><em>Ngủ</em><b>Suối khoáng nóng Bảo Lâm, Trạm Tấu</b>, đặt phòng trước <span class="todo">Cần làm</span></p>
+      <p class="stay"><em>Ngủ</em><b>Suối khoáng nóng Bảo Lâm, Trạm Tấu</b><span>đặt phòng trước <span class="todo">Cần làm</span></span></p>
     </article>
     <p class="move"><b>Trạm Tấu đi Mù Cang Chải, khoảng 115 km</b>Trạm Tấu tới đèo Khau Phạ 90 km, 2,5 tiếng. Khau Phạ tới A Su Homestay 25 km, 45 phút. Tổng 3–3,5 tiếng.</p>
   </section>
@@ -278,7 +325,7 @@
         <li><span class="t">Chiều muộn</span><span class="w"><mark>Bay dù lượn đèo Khau Phạ</mark> "Bay trên mùa vàng", 10–15 phút lượn trên thung lũng Lìm Mông.</span></li>
         <li class="sub"><span class="t"></span><span class="w">Đặt lịch bay trước, giá khoảng 2–2,5 triệu một người. Tùy gió nên có thể phải đổi sang sáng ngày 4 <span class="todo">Cần làm</span></span></li>
       </ol>
-      <p class="stay"><em>Ngủ</em><b>A Su Homestay, Mù Cang Chải</b>, đêm 1/2</p>
+      <p class="stay"><em>Ngủ</em><b>A Su Homestay, Mù Cang Chải</b><span>đêm 1/2</span></p>
     </article>
 
     <article class="day" id="d4" data-n="4" data-place="Mù Cang Chải" data-alt="1.000 m">
@@ -292,7 +339,7 @@
         <li><span class="t">Chiều muộn</span><span class="w"><mark>Hoàng hôn Đồi Móng Ngựa</mark>, điểm hoàng hôn đẹp nhất Mù Cang Chải, mặt trời lặn khoảng 17:45.</span></li>
         <li><span class="t">Tối</span><span class="w">Ăn tối tại homestay <span class="opt">hoặc lên xe đi Sa Pa ngay 18:00, khoảng 22:30 tới nơi</span></span></li>
       </ol>
-      <p class="stay"><em>Ngủ</em><b>A Su Homestay</b>, đêm 2/2, hoặc trên xe đi Sa Pa</p>
+      <p class="stay"><em>Ngủ</em><b>A Su Homestay</b><span>đêm 2/2, hoặc trên xe đi Sa Pa</span></p>
     </article>
     <p class="move"><b>Mù Cang Chải đi Sa Pa, khoảng 160 km</b>Ô tô riêng 4–4,5 tiếng, xe khách 5–6 tiếng vì đường đèo và hay dừng đón khách.</p>
   </section>
@@ -311,7 +358,7 @@
         <li><span class="t">Chiều</span><span class="w">Dạo nhà thờ Đá, chợ Sa Pa, cà phê ngắm Fansipan. Đi nhẹ để giữ sức.</span></li>
         <li><span class="t">Tối</span><span class="w">Gặp porter hoặc tour Kỳ Quan San, nhận đồ thuê (túi ngủ, gậy), gửi hành lý không cần thiết ở khách sạn. <span class="todo">Cần làm</span></span></li>
       </ol>
-      <p class="stay"><em>Ngủ</em><b>Khách sạn Sa Pa</b>, đặt trước và giữ đồ 3 đêm <span class="todo">Cần làm</span></p>
+      <p class="stay"><em>Ngủ</em><b>Khách sạn Sa Pa</b><span>đặt trước và giữ đồ 3 đêm <span class="todo">Cần làm</span></span></p>
     </article>
     <p class="move"><b>Sa Pa đi bản Ky Quan San, khoảng 55 km</b>1,5–2 tiếng, qua Ô Quy Hồ và Mường Hum.</p>
   </section>
@@ -329,7 +376,7 @@
         <li><span class="t">10:00</span><span class="w"><mark>Bắt đầu leo lên lán Núi Muối</mark> 2.100 m, 7–8 tiếng đi bộ qua nương thảo quả, suối lớn và rừng nguyên sinh. Ăn trưa dọc đường khoảng 11:30.</span></li>
         <li><span class="t">17:00–18:00</span><span class="w">Tới lán, ăn tối, ngắm biển mây và hoàng hôn ở Núi Muối.</span></li>
       </ol>
-      <p class="stay"><em>Ngủ</em><b>Lán Núi Muối</b>, đêm 1/2</p>
+      <p class="stay"><em>Ngủ</em><b>Lán Núi Muối</b><span>đêm 1/2</span></p>
     </article>
 
     <article class="day" id="d7" data-n="7" data-place="Đỉnh Kỳ Quan San" data-alt="3.046 m">
@@ -342,7 +389,7 @@
         <li><span class="t">13:00</span><span class="w">Xuống lại lán Núi Muối, khoảng 3 tiếng, về tới lán khoảng 16:00.</span></li>
         <li><span class="t">Chiều</span><span class="w">Nghỉ ngơi, chụp ảnh biển mây chiều tại Núi Muối.</span></li>
       </ol>
-      <p class="stay"><em>Ngủ</em><b>Lán Núi Muối</b>, đêm 2/2</p>
+      <p class="stay"><em>Ngủ</em><b>Lán Núi Muối</b><span>đêm 2/2</span></p>
     </article>
 
     <article class="day" id="d8" data-n="8" data-place="Xuống núi, về Sa Pa" data-alt="1.600 m">
@@ -360,19 +407,22 @@
 
   <!-- ═══════════ VỀ ═══════════ -->
   <section class="phase" style="--c:var(--ma)">
-    <div class="phase-h"><h2>Kết thúc</h2><span class="alt">Sa Pa về Hà Nội</span></div>
+    <div class="phase-h"><h2>Kết thúc</h2><span class="alt">Sa Pa đi Nội Bài, bay về Sài Gòn</span></div>
 
-    <article class="day" id="d9" data-n="9" data-place="Sa Pa về Hà Nội" data-alt="10 m">
+    <article class="day" id="d9" data-n="9" data-place="Sa Pa đi Nội Bài" data-alt="10 m">
       <div class="num" aria-hidden="true">9</div>
-      <div class="meta"><time datetime="2026-09-20">Chủ Nhật 20/9</time><span class="pl">Sa Pa về Hà Nội</span></div>
-      <h3>Chơi Sa Pa buổi sáng, trưa lên xe về</h3>
+      <div class="meta"><time datetime="2026-09-20">Chủ Nhật 20/9</time><span class="pl">Sa Pa, Nội Bài, Sài Gòn</span></div>
+      <h3>Chơi Sa Pa buổi sáng, 14:00 lên xe ra sân bay, đêm bay về Sài Gòn</h3>
       <ol class="plan">
         <li><span class="t">Sáng</span><span class="w">Cà phê, dạo bản Cát Cát hoặc mua quà ở chợ.</span></li>
-        <li><span class="t">12:00–13:00</span><span class="w">Lên xe về Hà Nội theo cao tốc Nội Bài, Lào Cai.</span></li>
-        <li><span class="t">18:00–19:00</span><span class="w">Về tới Hà Nội. Kết thúc chuyến đi.</span></li>
+        <li><span class="t">12:00</span><span class="w">Ăn trưa, trả phòng, lấy hết đồ gửi ở khách sạn.</span></li>
+        <li><span class="t">14:00</span><span class="w">Lên xe đi thẳng sân bay Nội Bài theo cao tốc Lào Cai, Nội Bài, khoảng 5–5,5 tiếng. Tới sân bay khoảng 19:30–20:00.</span></li>
+        <li class="sub"><span class="t"></span><span class="w">Chọn xe có tuyến dừng ngay Nội Bài, không vào nội thành, để không phải quay ngược ra sân bay <span class="todo">Cần làm</span></span></li>
+        <li><span class="t">20:00</span><span class="w">Ăn tối ở sân bay, làm thủ tục, ký gửi gậy leo núi.</span></li>
+        <li><span class="t">23:25</span><span class="w"><span class="fly">Bay Nội Bài về Tân Sơn Nhất</span>, hạ cánh khoảng 01:35 sáng 21/9. Kết thúc chuyến đi.</span></li>
       </ol>
     </article>
-    <p class="move"><b>Sa Pa về Hà Nội, khoảng 320 km</b>Xe giường nằm hoặc limousine 5,5–6 tiếng.</p>
+    <p class="move"><b>Sa Pa đi Nội Bài, khoảng 280 km</b>Xe giường nằm hoặc limousine 5–5,5 tiếng. Xuất phát 14:00, dư khoảng 3 tiếng trước giờ bay.</p>
   </section>
 
   <section class="notes">
@@ -380,6 +430,8 @@
     <table class="tbl">
       <thead><tr><th>Chặng</th><th>Km</th><th>Thời gian</th><th>Ghi chú</th></tr></thead>
       <tbody>
+      <tr class="f"><td>Sài Gòn bay Hà Nội</td><td>bay</td><td>05:00 → 07:10</td><td>Có mặt sân bay 03:30, ký gửi gậy leo núi</td></tr>
+      <tr><td>Nội Bài vào trung tâm Hà Nội</td><td>~30</td><td>45 phút – 1 h</td><td>Taxi hoặc xe buýt 86</td></tr>
       <tr><td>Hà Nội, Nghĩa Lộ, Trạm Tấu</td><td>~220</td><td>5,5–6 h</td><td>Xe khách tới Nghĩa Lộ, taxi 30 km vào Trạm Tấu</td></tr>
       <tr><td>Trạm Tấu, Khau Phạ, A Su Homestay</td><td>~115</td><td>3–3,5 h</td><td>Qua Tú Lệ, dừng chụp ảnh thêm 30 phút</td></tr>
       <tr><td>A Su Homestay và thị trấn Mù Cang Chải</td><td>~25</td><td>40–45 phút</td><td>Kim Nọi, rừng trúc, Móng Ngựa đều ở phía thị trấn</td></tr>
@@ -388,7 +440,8 @@
       <tr><td>Chân núi lên lán Núi Muối, đi bộ</td><td>~12</td><td>7–8 h</td><td>Xuất phát 10:00, tới lán 17:00–18:00</td></tr>
       <tr><td>Núi Muối lên đỉnh rồi về lán, đi bộ</td><td>~10</td><td>4–5 h lên, ~3 h xuống</td><td>Cả cung 30–36 km đi và về</td></tr>
       <tr><td>Núi Muối xuống chân núi, đi bộ</td><td>~12</td><td>5–6 h</td><td>Xuống dốc mỏi gối, cần gậy</td></tr>
-      <tr><td>Sa Pa về Hà Nội</td><td>~320</td><td>5,5–6 h</td><td>Cao tốc Nội Bài, Lào Cai</td></tr>
+      <tr><td>Sa Pa đi sân bay Nội Bài</td><td>~280</td><td>5–5,5 h</td><td>Cao tốc Lào Cai, Nội Bài; xuất phát 14:00, tới 19:30–20:00</td></tr>
+      <tr class="f"><td>Hà Nội bay Sài Gòn</td><td>bay</td><td>23:25 → 01:35</td><td>Hạ cánh rạng sáng 21/9</td></tr>
       </tbody>
     </table>
   </section>
@@ -396,20 +449,25 @@
   <section class="notes">
     <h2>Việc cần chốt trước ngày đi</h2>
     <ul class="check" id="check">
+      <li><label><input type="checkbox" data-k="ve-may-bay"><span>Vé máy bay: Sài Gòn đi Hà Nội 05:00 ngày 12/9, Hà Nội về Sài Gòn 23:25 ngày 20/9. Mua thêm hành lý ký gửi nếu mang gậy leo núi.</span></label></li>
       <li><label><input type="checkbox" data-k="xe-hn-tt"><span>Vé xe Hà Nội đi Trạm Tấu (hỏi có dừng ở Bảo Lâm) và xe Trạm Tấu đi Mù Cang Chải.</span></label></li>
       <li><label><input type="checkbox" data-k="phong"><span>Phòng suối khoáng Bảo Lâm (13/9), A Su Homestay (14–15/9), khách sạn Sa Pa (16/9 và 19/9).</span></label></li>
       <li><label><input type="checkbox" data-k="du-luon"><span>Đặt bay dù lượn Khau Phạ. Bay theo gió, nên để lịch linh hoạt giữa chiều 14/9 và sáng 15/9.</span></label></li>
       <li><label><input type="checkbox" data-k="porter"><span>Tour hoặc porter Kỳ Quan San 17–19/9 (2 đêm Núi Muối), thuê túi ngủ, kiểm tra dự báo thời tiết.</span></label></li>
       <li><label><input type="checkbox" data-k="chot-sapa"><span>Chốt đi Sa Pa tối 15/9 (18:00, tới khoảng 22:30) hay sáng 16/9 (07:00, tới khoảng 11:30). <i>Đi sáng an toàn hơn vì đèo Ô Quy Hồ đẹp và dễ đi ban ngày; đi tối thì được trọn ngày 16/9 ở Sa Pa.</i></span></label></li>
+      <li><label><input type="checkbox" data-k="xe-noi-bai"><span>Đặt xe Sa Pa đi thẳng Nội Bài chuyến 14:00 ngày 20/9, xác nhận giờ tới sân bay trước 20:30.</span></label></li>
       <li><label><input type="checkbox" data-k="map"><span>Xem tuyến Mù Cang Chải chi tiết trên bản đồ: mở app <i>mu-cang-chai-planner</i>.</span></label></li>
     </ul>
   </section>
 </main>
 
-<footer>Tây Bắc 12–20/9/2026. Thời gian di chuyển tổng hợp từ VnExpress, Báo Lào Cai, Viettrekking và các nhà xe (9/2026); vẫn nên xác nhận lại với nhà xe và porter. Tích vào danh sách việc cần chốt thì máy này sẽ nhớ.</footer>
+<footer>Tây Bắc 12–20/9/2026. Thời gian di chuyển tổng hợp từ VnExpress, Báo Lào Cai, Viettrekking và các nhà xe (9/2026); vẫn nên xác nhận lại với nhà xe, porter và giờ bay thực tế trên vé. Tích vào danh sách việc cần chốt thì máy này sẽ nhớ.</footer>
 
 <script>
 (function(){
+  // Hoạt ảnh hero chỉ chạy một lần khi tải trang
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('anim');
+
   // Thanh dính: hiện khi đã cuộn qua hero, chấm vàng chạy tới ngày đang đọc
   var XS=[80,210,340,470,600,730,860,990,1120], YS=[468.8,370.2,332.8,345.2,270.4,208,90,270.4,468.8];
   var bar=document.getElementById('bar'), mk=document.getElementById('mk');
@@ -420,8 +478,8 @@
     ticking=false;
     var past=hero.getBoundingClientRect().bottom<0;
     bar.classList.toggle('on',past);
-    var i=0;
-    for(var k=0;k<days.length;k++){ if(days[k].getBoundingClientRect().top<=140) i=k; }
+    var i=0, line=Math.min(window.innerHeight*.4,320);
+    for(var k=0;k<days.length;k++){ if(days[k].getBoundingClientRect().top<=line) i=k; }
     if(i!==cur){
       cur=i; var d=days[i];
       mk.style.left=(XS[i]/1200*100)+'%'; mk.style.top=((YS[i]-60)/440*100)+'%';
