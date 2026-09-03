@@ -144,6 +144,7 @@
   .check input:checked::before{transform:scale(1)}
   .check input:checked+span{color:var(--may-3);text-decoration:line-through;text-decoration-color:var(--may-3)}
   .check i{font-style:normal;color:var(--may-2);font-size:14px}
+  .check a,.plan a{color:var(--ma)}
   footer{max-width:800px;margin:64px auto 0;padding:24px 24px 0;border-top:1px solid var(--line);font-size:12.5px;color:var(--may-3);line-height:1.6}
 
   @media (max-width:640px){
@@ -433,13 +434,14 @@
       <ol class="plan">
         <li><span class="t">Sáng</span><span class="w">Cà phê, dạo bản Cát Cát hoặc mua quà ở chợ.</span></li>
         <li><span class="t">12:00</span><span class="w">Ăn trưa, trả phòng, lấy hết đồ gửi ở khách sạn.</span></li>
-        <li><span class="t">14:00</span><span class="w">Lên xe đi thẳng sân bay Nội Bài theo cao tốc Lào Cai, Nội Bài, khoảng 5–5,5 tiếng. Tới sân bay khoảng 19:30–20:00.</span></li>
+        <li><span class="t">14:00</span><span class="w"><mark>Xe cabin G8 Open Tour đi Nội Bài</mark>, đón ở văn phòng G8 đường Điện Biên Phủ, Sa Pa, chạy cao tốc Lào Cai, Nội Bài khoảng 5 tiếng, trả ngay sân bay. Tới khoảng 19:00–19:30.</span></li>
+        <li class="sub"><span class="t"></span><span class="w">Đặt vé tại <a href="https://g8opentour.com/ve-xe-khach-tu-sa-pa-lao-cai-di-ha-noi?departDate=20-09-2026&amp;fromLabel=Sa%20Pa&amp;toLabel=H%C3%A0%20N%E1%BB%99i" target="_blank" rel="noopener">g8opentour.com, chuyến ngày 20/9</a>. Cabin đơn 400–470 nghìn, cabin đôi 700–720 nghìn. Khi đặt chọn điểm trả là sân bay Nội Bài, không phải văn phòng Hoàng Quốc Việt <span class="todo">Cần làm</span></span></li>
         <li class="sub"><span class="t"></span><span class="w">Chọn xe có tuyến dừng ngay Nội Bài, không vào nội thành, để không phải quay ngược ra sân bay <span class="todo">Cần làm</span></span></li>
         <li><span class="t">20:00</span><span class="w">Ăn tối ở sân bay, làm thủ tục, ký gửi gậy leo núi.</span></li>
         <li><span class="t">23:25</span><span class="w"><span class="fly">Bay Nội Bài về Tân Sơn Nhất</span>, hạ cánh khoảng 01:35 sáng 21/9. Kết thúc chuyến đi.</span></li>
       </ol>
     </article>
-    <p class="move"><b>Sa Pa đi Nội Bài, khoảng 280 km</b>Xe giường nằm hoặc limousine 5–5,5 tiếng. Xuất phát 14:00, dư khoảng 3 tiếng trước giờ bay.</p>
+    <p class="move"><b>Sa Pa đi Nội Bài, khoảng 280 km</b>Xe cabin G8 Open Tour, khoảng 5 tiếng, trả tại sân bay. Xuất phát 14:00, dư hơn 3 tiếng trước giờ bay 23:25.</p>
   </section>
 
   <section class="notes">
@@ -458,7 +460,7 @@
       <tr><td>Chân núi lên lán Núi Muối, đi bộ</td><td>~12</td><td>7–8 h</td><td>Xuất phát 10:00, tới lán 17:00–18:00</td></tr>
       <tr><td>Núi Muối lên đỉnh rồi về lán, đi bộ</td><td>~10</td><td>4–5 h lên, ~3 h xuống</td><td>Cả cung 30–36 km đi và về</td></tr>
       <tr><td>Núi Muối xuống chân núi, đi bộ</td><td>~12</td><td>5–6 h</td><td>Xuống dốc mỏi gối, cần gậy</td></tr>
-      <tr><td>Sa Pa đi sân bay Nội Bài</td><td>~280</td><td>5–5,5 h</td><td>Cao tốc Lào Cai, Nội Bài; xuất phát 14:00, tới 19:30–20:00</td></tr>
+      <tr><td>Sa Pa đi sân bay Nội Bài</td><td>~280</td><td>~5 h</td><td>G8 Open Tour cabin, xuất phát 14:00, trả tại sân bay khoảng 19:00–19:30</td></tr>
       <tr class="f"><td>Hà Nội bay Sài Gòn</td><td>bay</td><td>23:25 → 01:35</td><td>Hạ cánh rạng sáng 21/9</td></tr>
       </tbody>
     </table>
@@ -475,7 +477,7 @@
       <li><label><input type="checkbox" data-k="xe-may-kim"><span>Đặt xe máy tiệm Hải Sơn ở chợ Ngã ba Kim, lấy 11:00 ngày 14/9, trả 09:30 ngày 15/9. Đặt qua Vexere 1900 545541 (7–21 giờ), mở cửa 6–21 giờ, mang căn cước và bằng A1. Taxi từ Trạm Tấu ghé chợ rồi mới vào homestay.</span></label></li>
       <li><label><input type="checkbox" data-k="xe-may-sapa"><span>Thuê xe máy Sa Pa: Mr Q Motorbike Rental, 458 Điện Biên Phủ, 0973 527 313, mở 06:00. Ghé lúc tới Sa Pa chiều 15/9 hoặc sáng 16/9.</span></label></li>
       <li><label><input type="checkbox" data-k="xe-mcc-sapa"><span>Xe Tuấn Huệ đi Sa Pa ngày 15/9: gọi 0343 567 888 giữ 2 chỗ, báo đón ở Ngã ba Kim khoảng 09:45–10:15, xin số tài xế.</span></label></li>
-      <li><label><input type="checkbox" data-k="xe-noi-bai"><span>Đặt xe Sa Pa đi thẳng Nội Bài chuyến 14:00 ngày 20/9, xác nhận giờ tới sân bay trước 20:30.</span></label></li>
+      <li><label><input type="checkbox" data-k="xe-noi-bai"><span>Đặt xe G8 Open Tour Sa Pa đi Nội Bài ngày 20/9, chuyến khoảng 14:00, điểm trả sân bay Nội Bài: <a href="https://g8opentour.com/ve-xe-khach-tu-sa-pa-lao-cai-di-ha-noi?departDate=20-09-2026&amp;fromLabel=Sa%20Pa&amp;toLabel=H%C3%A0%20N%E1%BB%99i" target="_blank" rel="noopener">link đặt vé</a>.</span></label></li>
       <li><label><input type="checkbox" data-k="map"><span>Xem tuyến Mù Cang Chải chi tiết trên bản đồ: mở app <i>mu-cang-chai-planner</i>.</span></label></li>
     </ul>
   </section>
